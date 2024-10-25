@@ -5,7 +5,7 @@ import { AgentRuntimeError, AgentRuntimeErrorType, LobeGoogleAI } from '@/libs/a
 export class LobeVertexAI extends LobeGoogleAI {
   static initFromVertexAI(params?: VertexInit) {
     try {
-      const client = new VertexAI({ location: 'us-central1', ...params });
+      const client = new VertexAI({ ...params });
 
       return new LobeGoogleAI({ apiKey: 'avoid-error', client });
     } catch (e) {

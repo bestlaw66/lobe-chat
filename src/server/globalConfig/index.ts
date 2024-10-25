@@ -32,6 +32,7 @@ import {
   TaichuProviderCard,
   TogetherAIProviderCard,
   UpstageProviderCard,
+  VertexAIProviderCard,
   WenxinProviderCard,
   ZeroOneProviderCard,
   ZhiPuProviderCard,
@@ -103,7 +104,7 @@ export const getServerGlobalConfig = () => {
 
     ENABLED_AI21,
     AI21_MODEL_LIST,
-    
+
     ENABLED_AI360,
     AI360_MODEL_LIST,
 
@@ -143,6 +144,9 @@ export const getServerGlobalConfig = () => {
 
     ENABLED_HUGGINGFACE,
     HUGGINGFACE_MODEL_LIST,
+
+    ENABLED_VERTEXAI,
+    VERTEXAI_MODEL_LIST,
   } = getLLMConfig();
 
   const config: GlobalServerConfig = {
@@ -385,6 +389,14 @@ export const getServerGlobalConfig = () => {
         serverModelCards: transformToChatModelCards({
           defaultChatModels: UpstageProviderCard.chatModels,
           modelString: UPSTAGE_MODEL_LIST,
+        }),
+      },
+      vertexai: {
+        enabled: ENABLED_VERTEXAI,
+        enabledModels: extractEnabledModels(VERTEXAI_MODEL_LIST),
+        serverModelCards: transformToChatModelCards({
+          defaultChatModels: VertexAIProviderCard.chatModels,
+          modelString: VERTEXAI_MODEL_LIST,
         }),
       },
       wenxin: {

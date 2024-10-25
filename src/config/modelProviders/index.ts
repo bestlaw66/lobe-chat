@@ -29,6 +29,7 @@ import StepfunProvider from './stepfun';
 import TaichuProvider from './taichu';
 import TogetherAIProvider from './togetherai';
 import UpstageProvider from './upstage';
+import VertexAIProvider from './vertexai';
 import WenxinProvider from './wenxin';
 import ZeroOneProvider from './zeroone';
 import ZhiPuProvider from './zhipu';
@@ -61,6 +62,7 @@ export const LOBE_DEFAULT_MODEL_LIST: ChatModelCard[] = [
   SiliconCloudProvider.chatModels,
   UpstageProvider.chatModels,
   SparkProvider.chatModels,
+  VertexAIProvider.chatModels,
   Ai21Provider.chatModels,
   HunyuanProvider.chatModels,
   WenxinProvider.chatModels,
@@ -100,6 +102,7 @@ export const DEFAULT_MODEL_PROVIDER_LIST = [
   Ai360Provider,
   TaichuProvider,
   SiliconCloudProvider,
+  VertexAIProvider,
 ];
 
 export const filterEnabledModels = (provider: ModelProviderCard) => {
@@ -140,6 +143,7 @@ export { default as StepfunProviderCard } from './stepfun';
 export { default as TaichuProviderCard } from './taichu';
 export { default as TogetherAIProviderCard } from './togetherai';
 export { default as UpstageProviderCard } from './upstage';
+export { default as VertexAIProviderCard } from './vertexai';
 export { default as WenxinProviderCard } from './wenxin';
 export { default as ZeroOneProviderCard } from './zeroone';
 export { default as ZhiPuProviderCard } from './zhipu';
