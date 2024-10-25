@@ -16,6 +16,7 @@ import { LobeGoogleAI } from './google';
 import { LobeGroq } from './groq';
 import { LobeHuggingFaceAI } from './huggingface';
 import { LobeHunyuanAI } from './hunyuan';
+import { LobeLMStudioAI } from './lmstudio';
 import { LobeMinimaxAI } from './minimax';
 import { LobeMistralAI } from './mistral';
 import { LobeMoonshotAI } from './moonshot';
@@ -138,6 +139,7 @@ class AgentRuntime {
       groq: Partial<ClientOptions>;
       huggingface: { apiKey?: string; baseURL?: string };
       hunyuan: Partial<ClientOptions>;
+      lmstudio: Partial<ClientOptions>;
       minimax: Partial<ClientOptions>;
       mistral: Partial<ClientOptions>;
       moonshot: Partial<ClientOptions>;
@@ -194,6 +196,11 @@ class AgentRuntime {
 
       case ModelProvider.Bedrock: {
         runtimeModel = new LobeBedrockAI(params.bedrock);
+        break;
+      }
+
+      case ModelProvider.LMStudio: {
+        runtimeModel = new LobeLMStudioAI(params.lmstudio);
         break;
       }
 

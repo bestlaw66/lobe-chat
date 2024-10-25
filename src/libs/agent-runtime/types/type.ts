@@ -1,5 +1,6 @@
 import OpenAI from 'openai';
 
+
 import { ILobeAgentRuntimeErrorType } from '../error';
 import { ChatStreamPayload } from './chat';
 
@@ -35,6 +36,7 @@ export enum ModelProvider {
   Groq = 'groq',
   HuggingFace = 'huggingface',
   Hunyuan = 'hunyuan',
+  LMStudio = 'lmstudio',
   Minimax = 'minimax',
   Mistral = 'mistral',
   Moonshot = 'moonshot',
