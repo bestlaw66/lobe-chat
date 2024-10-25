@@ -31,6 +31,13 @@ export const getLLMConfig = () => {
       GOOGLE_PROXY_URL: z.string().optional(),
       GOOGLE_MODEL_LIST: z.string().optional(),
 
+      ENABLED_VERTEXAI: z.boolean(),
+      VERTEXAI_CREDENTIALS: z.string().optional(),
+      VERTEXAI_CREDENTIALS_PATH: z.string().optional(),
+      VERTEXAI_PROJECT: z.string().optional(),
+      VERTEXAI_LOCATION: z.string().optional(),
+      VERTEXAI_MODEL_LIST: z.string().optional(),
+
       ENABLED_MOONSHOT: z.boolean(),
       MOONSHOT_API_KEY: z.string().optional(),
       MOONSHOT_MODEL_LIST: z.string().optional(),
@@ -177,6 +184,14 @@ export const getLLMConfig = () => {
       GOOGLE_PROXY_URL: process.env.GOOGLE_PROXY_URL,
       GOOGLE_MODEL_LIST: process.env.GOOGLE_MODEL_LIST,
 
+      ENABLED_VERTEXAI:
+        !!process.env.VERTEXAI_CREDENTIALS_PATH || !!process.env.VERTEXAI_CREDENTIALS,
+      VERTEXAI_CREDENTIALS_PATH: process.env.VERTEXAI_CREDENTIALS_PATH,
+      VERTEXAI_CREDENTIALS: process.env.VERTEXAI_CREDENTIALS,
+      VERTEXAI_LOCATION: process.env.VERTEXAI_LOCATION,
+      VERTEXAI_PROJECT: process.env.VERTEXAI_PROJECT,
+      VERTEXAI_MODEL_LIST: process.env.VERTEXAI_MODEL_LIST,
+
       ENABLED_PERPLEXITY: !!process.env.PERPLEXITY_API_KEY,
       PERPLEXITY_API_KEY: process.env.PERPLEXITY_API_KEY,
       PERPLEXITY_MODEL_LIST: process.env.PERPLEXITY_MODEL_LIST,
@@ -291,7 +306,8 @@ export const getLLMConfig = () => {
       HUGGINGFACE_PROXY_URL: process.env.HUGGINGFACE_PROXY_URL,
       HUGGINGFACE_MODEL_LIST: process.env.HUGGINGFACE_MODEL_LIST,
 
-      ENABLED_SENSENOVA: !!process.env.SENSENOVA_ACCESS_KEY_ID && !!process.env.SENSENOVA_ACCESS_KEY_SECRET,
+      ENABLED_SENSENOVA:
+        !!process.env.SENSENOVA_ACCESS_KEY_ID && !!process.env.SENSENOVA_ACCESS_KEY_SECRET,
       SENSENOVA_ACCESS_KEY_ID: process.env.SENSENOVA_ACCESS_KEY_ID,
       SENSENOVA_ACCESS_KEY_SECRET: process.env.SENSENOVA_ACCESS_KEY_SECRET,
       SENSENOVA_MODEL_LIST: process.env.SENSENOVA_MODEL_LIST,

@@ -152,6 +152,10 @@ export const DEFAULT_LLM_CONFIG: UserModelProviderConfig = {
     enabled: false,
     enabledModels: filterEnabledModels(UpstageProviderCard),
   },
+  vertexai: {
+    enabled: false,
+    enabledModels: filterEnabledModels(GoogleProviderCard),
+  },
   wenxin: {
     enabled: false,
     enabledModels: filterEnabledModels(WenxinProviderCard),
