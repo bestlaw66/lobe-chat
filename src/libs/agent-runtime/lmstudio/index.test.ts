@@ -9,10 +9,10 @@ import {
 } from '@/libs/agent-runtime';
 
 import * as debugStreamModule from '../utils/debugStream';
-import { LobeDeepSeekAI } from './index';
+import { LobeLMStudioAI } from './index';
 
-const provider = ModelProvider.DeepSeek;
-const defaultBaseURL = 'https://api.deepseek.com/v1';
+const provider = ModelProvider.LMStudio;
+const defaultBaseURL = 'http://localhost:1234/v1';
 
 const bizErrorType = 'ProviderBizError';
 const invalidErrorType = 'InvalidProviderAPIKey';
@@ -23,7 +23,7 @@ vi.spyOn(console, 'error').mockImplementation(() => {});
 let instance: LobeOpenAICompatibleRuntime;
 
 beforeEach(() => {
-  instance = new LobeDeepSeekAI({ apiKey: 'test' });
+  instance = new LobeLMStudioAI({ apiKey: 'test' });
 
   // 使用 vi.spyOn 来模拟 chat.completions.create 方法
   vi.spyOn(instance['client'].chat.completions, 'create').mockResolvedValue(
@@ -35,11 +35,11 @@ afterEach(() => {
   vi.clearAllMocks();
 });
 
-describe('LobeDeepSeekAI', () => {
+describe('LobeLMStudioAI', () => {
   describe('init', () => {
     it('should correctly initialize with an API key', async () => {
-      const instance = new LobeDeepSeekAI({ apiKey: 'test_api_key' });
-      expect(instance).toBeInstanceOf(LobeDeepSeekAI);
+      const instance = new LobeLMStudioAI({ apiKey: 'test_api_key' });
+      expect(instance).toBeInstanceOf(LobeLMStudioAI);
       expect(instance.baseURL).toEqual(defaultBaseURL);
     });
   });
@@ -84,7 +84,7 @@ describe('LobeDeepSeekAI', () => {
 
       it('should throw AgentRuntimeError with NoOpenAIAPIKey if no apiKey is provided', async () => {
         try {
-          new LobeDeepSeekAI({});
+          new LobeLMStudioAI({});
         } catch (e) {
           expect(e).toEqual({ errorType: invalidErrorType });
         }
@@ -130,7 +130,7 @@ describe('LobeDeepSeekAI', () => {
         };
         const apiError = new OpenAI.APIError(400, errorInfo, 'module error', {});
 
-        instance = new LobeDeepSeekAI({
+        instance = new LobeLMStudioAI({
           apiKey: 'test',
 
           baseURL: 'https://api.abc.com/v1',
